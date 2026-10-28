@@ -1,0 +1,21 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data and databases
+/data/
+*.sqlite3
+*.db
+*.chroma/
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local tooling
+.pytest_cache/
+.mypy_cache/
+.vscode/
