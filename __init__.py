@@ -1,3 +1,4 @@
 """ContextDrift: self-healing middleware and knowledge auditor for RAG pipelines."""
+from app import __version__
 
-__version__ = "1.0.0"
+__all__ = ["__version__"]
