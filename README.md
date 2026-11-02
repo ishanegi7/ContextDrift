@@ -9,7 +9,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Open http://127.0.0.1:8000. Requires Python 3.11+.
+Open --. Requires Python 3.11+.
 
 No API key is needed. Without one, a deterministic offline evaluator makes the conflict decisions. To use a real LLM, copy `.env.example` to `.env` and set one of `GROQ_API_KEY`, `OPENAI_API_KEY` or `GEMINI_API_KEY`.
 
@@ -59,14 +59,6 @@ A verdict only triggers action when `confidence_score >= MIN_CONFIDENCE` (0.50).
 | GET | `/api/health` | Embedder and evaluator in use |
 | POST | `/api/reset` | Clear chunks, lineage and audit log |
 
-Interactive docs: http://127.0.0.1:8000/docs
-
-```bash
-curl -s localhost:8000/api/ingest -H 'content-type: application/json' \
-  -d '{"doc_name":"leave_2024.md","text":"Employees get 24 paid annual leaves per year."}'
-curl -s localhost:8000/api/query -H 'content-type: application/json' \
-  -d '{"prompt":"How many annual leaves do employees get?"}'
-```
 
 ## Design notes
 
