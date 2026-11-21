@@ -39,6 +39,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 log = logging.getLogger("contextdrift")
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
+DIST_DIR = STATIC_DIR / "dist"
 MAX_UPLOAD_BYTES = 2 * 1024 * 1024
 ALLOWED_SUFFIXES = (".md", ".markdown", ".txt", ".text")
 
@@ -274,6 +275,8 @@ def compute_stats(svc: Services) -> StatsResponse:
 
 @app.get("/", include_in_schema=False)
 async def index() -> FileResponse:
+    if (DIST_DIR / "index.html").is_file():
+        return FileResponse(DIST_DIR / "index.html")
     return FileResponse(STATIC_DIR / "index.html")
 
 
@@ -392,5 +395,8 @@ async def reset(request: Request) -> Dict[str, str]:
     await run_in_threadpool(work)
     return {"status": "reset"}
 
+
+if (DIST_DIR / "assets").is_dir():
+    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="assets")
 
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
