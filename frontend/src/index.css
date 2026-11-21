@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+  }
+
+  body {
+    background-color: #FEFCF3;
+    color: #2C2220;
+    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.011em;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  code, pre, kbd, samp {
+    font-family: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+    font-feature-settings: 'tnum', 'zero';
+  }
+}
+
+::selection {
+  background: #F0DBDB;
+  color: #2C2220;
+}
+
+:focus-visible {
+  outline: 2px solid #DBA39A;
+  outline-offset: 2px;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #EADBCE transparent;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #EADBCE;
+  border-radius: 6px;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: #DBA39A;
+}
+
+/* word-level diff marks */
+.d-del {
+  background: rgba(192, 72, 64, 0.1);
+  color: #A3332C;
+  text-decoration: line-through;
+  text-decoration-color: #C04840;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-weight: 500;
+}
+
+.d-add {
+  background: rgba(45, 119, 81, 0.1);
+  color: #1F5A3C;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-weight: 600;
+}
+
+.stale-text {
+  color: #8F807D;
+}
+
+/* Accordion group data-expanded state */
+[data-expanded] .group-data-expanded\:-rotate-180,
+[data-expanded="true"] .group-data-expanded\:-rotate-180,
+.group[data-expanded] .group-data-expanded\:-rotate-180,
+.group[data-expanded="true"] .group-data-expanded\:-rotate-180 {
+  transform: rotate(-180deg);
+}
