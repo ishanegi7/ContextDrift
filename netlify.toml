@@ -1,0 +1,12 @@
+# The deployable site is the Vite + React frontend in /frontend.
+# The Python/FastAPI backend (app/, requirements.txt) is not built here.
+[build]
+  base = "frontend"
+  # Install from the lockfile first so the Vite CLI is always available,
+  # even when the build runs without Netlify's automatic dependency install.
+  command = "npm ci && npm run build"
+  # vite.config.js writes the build to ../app/static/dist (relative to frontend/)
+  publish = "../app/static/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
